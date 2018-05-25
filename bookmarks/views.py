@@ -13,7 +13,8 @@ def index(request):
       form.save()
     else:
       # Some error handling
-      raise EnvironmentError("The form isn't valid for the db.")
+      raise Http404("The form isn't valid for the db.")
+      pass
 
   context = {
     'bookmarks': Bookmark.objects.all(),
