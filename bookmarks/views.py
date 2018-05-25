@@ -4,6 +4,17 @@ from .forms import BookmarkForm
 # Create your views here.
 
 def index(request):
+  import pdb; pdb.set_trace()
+
+  if request.method == 'POST':
+    form = BookmarkForm(request.POST)
+    if form.is_valid():
+      # Check permissions for p bookmark
+      form.save()
+    else:
+      # Some error handling
+      pass
+
   context = {
     'bookmarks': Bookmark.objects.all(),
   }

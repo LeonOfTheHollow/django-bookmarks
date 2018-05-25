@@ -25,6 +25,7 @@ No bookmarks yet! Make one with the form below.
 <h2>Add a Bookmark</h2>
 
 <form method="POST" class="bookmark-form">
+  {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="save btn btn-default">Save</button>
 </form>
