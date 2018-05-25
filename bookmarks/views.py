@@ -13,7 +13,7 @@ def index(request):
       form.save()
     else:
       # Some error handling
-      pass
+      raise EnvironmentError("The form isn't valid for the db.")
 
   context = {
     'bookmarks': Bookmark.objects.all(),
