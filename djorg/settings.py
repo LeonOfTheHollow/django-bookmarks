@@ -33,7 +33,9 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
-    'bookmarks.apps.BookmarksConfig',
+    'bookmarks',
+    'notes',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,7 +86,7 @@ DATABASES = {
 }
 
 # DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
-DATABASES = {'default': dj_database_url.config(default='postgres://user:pass@localhost/dbname')}
+# DATABASES = {'default': dj_database_url.config(default='postgres://user:pass@localhost/dbname')}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -127,3 +129,13 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/bookmarks/'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+# REST Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # Uses Django's standard django.contrib.auth permission
+        # Or gives read-only if unauthed
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
+}
